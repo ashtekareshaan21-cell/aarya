@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarya's Birthday Journal 🌸</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Confetti Container -->
+    <div class="confetti-container"></div>
+
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <div class="welcome-emoji">💖</div>
+            <h1>Happy Birthday Aarya!</h1>
+            <p>✨ This journal is a safe place just for you ✨</p>
+            <p class="welcome-subtitle">A month of reflection, gratitude, and growth</p>
+            <button id="startJournalBtn" class="btn-primary">Start Your Journey</button>
+        </div>
+        <div class="decorative-element floating">🌸</div>
+        <div class="decorative-element floating" style="animation-delay: 1s;">🌙</div>
+        <div class="decorative-element floating" style="animation-delay: 2s;">✨</div>
+    </div>
+
+    <!-- Main App -->
+    <div id="appContainer" class="app-container hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>✨ Aarya's Journal ✨</h1>
+            </div>
+            <div class="header-right">
+                <button id="darkModeToggle" class="btn-icon" title="Toggle Dark Mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+                <button id="exportBtn" class="btn-secondary btn-small">Export</button>
+            </div>
+        </header>
+
+        <!-- Progress Bar -->
+        <div class="progress-section">
+            <div class="progress-text">
+                <span id="progressLabel">0 / 30 days completed</span>
+            </div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calendar View -->
+            <section class="calendar-section">
+                <h2>📅 January 2026</h2>
+                <div id="calendarGrid" class="calendar-grid"></div>
+            </section>
+
+            <!-- Journal Entry -->
+            <section id="entrySection" class="entry-section hidden">
+                <div class="entry-header">
+                    <button class="btn-back" id="backBtn">← Back</button>
+                    <h2 id="entryDate">January 1, 2026</h2>
+                    <div class="entry-meta">
+                        <span id="dayNumber">Day 1 of 30</span>
+                    </div>
+                </div>
+
+                <!-- Daily Quote -->
+                <div class="quote-card">
+                    <p id="dailyQuote">The only way to do great work is to love what you do. - Steve Jobs</p>
+                    <button class="btn-icon quote-refresh" id="refreshQuoteBtn" title="Get another quote">🔄</button>
+                </div>
+
+                <!-- Mood Selector -->
+                <div class="mood-section">
+                    <label>How are you feeling today?</label>
+                    <div class="mood-selector">
+                        <button class="mood-btn" data-mood="😊">😊</button>
+                        <button class="mood-btn" data-mood="😍">😍</button>
+                        <button class="mood-btn" data-mood="😔">😔</button>
+                        <button class="mood-btn" data-mood="😤">😤</button>
+                        <button class="mood-btn" data-mood="😰">😰</button>
+                        <button class="mood-btn" data-mood="😎">😎</button>
+                    </div>
+                    <input type="hidden" id="moodInput">
+                </div>
+
+                <!-- Reflection Question -->
+                <div class="reflection-card">
+                    <h3>🤔 Today's Reflection</h3>
+                    <p id="reflectionQuestion">What made you smile today?</p>
+                </div>
+
+                <!-- Main Journal Entry -->
+                <div class="entry-card">
+                    <label for="entryText">📝 Your Thoughts</label>
+                    <textarea id="entryText" placeholder="Write your thoughts, feelings, and experiences..." rows="8"></textarea>
+                    <div class="word-count">
+                        <span id="wordCount">0</span> words
+                    </div>
+                </div>
+
+                <!-- Gratitude Section -->
+                <div class="gratitude-card">
+                    <h3>💜 Three Things I'm Grateful For</h3>
+                    <div class="gratitude-inputs">
+                        <input type="text" class="gratitude-input" placeholder="1. I'm grateful for..." maxlength="100">
+                        <input type="text" class="gratitude-input" placeholder="2. I'm grateful for..." maxlength="100">
+                        <input type="text" class="gratitude-input" placeholder="3. I'm grateful for..." maxlength="100">
+                    </div>
+                </div>
+
+                <!-- Highlight -->
+                <div class="highlight-card">
+                    <label for="highlightText">⭐ Highlight of the Day</label>
+                    <input type="text" id="highlightText" placeholder="What was the best moment today?" maxlength="150">
+                </div>
+
+                <!-- Save Button -->
+                <button id="saveEntryBtn" class="btn-primary btn-large">💾 Save Entry</button>
+
+                <!-- Lock Message -->
+                <div id="lockedMessage" class="locked-message hidden">
+                    <p>🔒 This entry is locked. Create a new day's entry to continue.</p>
+                </div>
+            </section>
+
+            <!-- Month End Reflection -->
+            <section id="monthEndSection" class="entry-section hidden">
+                <div class="entry-header">
+                    <button class="btn-back" id="backToCalendarBtn">← Back</button>
+                    <h2>💖 Month-End Reflection</h2>
+                </div>
+
+                <div class="reflection-content">
+                    <div class="reflection-card">
+                        <h3>📚 What I Learned This Month</h3>
+                        <textarea id="learningText" placeholder="Write about your key learnings and insights..." rows="5"></textarea>
+                    </div>
+
+                    <div class="reflection-card">
+                        <h3>✨ Best Memories</h3>
+                        <textarea id="memoryText" placeholder="Describe your favorite moments from this month..." rows="5"></textarea>
+                    </div>
+
+                    <div class="reflection-card">
+                        <h3>💌 Letter to Myself</h3>
+                        <textarea id="letterText" placeholder="Write a letter to yourself from the future..." rows="5"></textarea>
+                    </div>
+
+                    <button id="saveReflectionBtn" class="btn-primary btn-large">Save Reflection</button>
+                    <div id="reflectionSaved" class="saved-message hidden">✨ Reflection saved! 💖</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🌸 Made with love for Aarya's birthday 🌸</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
